@@ -1,3 +1,30 @@
 # Table of contents
 
-* [Page 1](README.md)
+* [Overview](README.md)
+* [Concepts](concepts.md)
+* [Quick Start](quick-start.md)
+* [MLFoundry Dashboard](mlfoundry-dashboard.md)
+
+## API Doc
+
+* [MLFoundry](api-doc/mlfoundry/README.md)
+  * [MLFoundryAPI](api-doc/mlfoundry/mlfoundryapi/README.md)
+    * [create\_run](api-doc/mlfoundry/mlfoundryapi/create\_run.md)
+    * [get\_run](api-doc/mlfoundry/mlfoundryapi/get\_run.md)
+    * [get\_all\_runs](api-doc/mlfoundry/mlfoundryapi/get\_all\_runs.md)
+    * [get\_all\_projects](api-doc/mlfoundry/mlfoundryapi/get\_all\_projects.md)
+    * [rename\_project](api-doc/mlfoundry/mlfoundryapi/rename\_project.md)
+  * [MLFoundryRun](api-doc/mlfoundry/mlfoundryrun/README.md)
+    * [log\_model](api-doc/mlfoundry/mlfoundryrun/log\_model.md)
+    * [log\_dataset](api-doc/mlfoundry/mlfoundryrun/log\_dataset.md)
+    * [log\_metrics](api-doc/mlfoundry/mlfoundryrun/log\_metrics.md)
+    * [log\_params](api-doc/mlfoundry/mlfoundryrun/log\_params.md)
+    * [log\_predictions](api-doc/mlfoundry/mlfoundryrun/log\_predictions.md)
+    * [log\_predictions\_async](api-doc/mlfoundry/mlfoundryrun/log\_predictions\_async.md)
+    * [log\_dataset\_stats](api-doc/mlfoundry/mlfoundryrun/log\_dataset\_stats.md)
+  * [MlFlow API](api-doc/mlfoundry/mlflow-api.md)
+  * [Enums](api-doc/mlfoundry/enums.md)
+* [Examples](api-doc/examples/README.md)
+  * [Classification](api-doc/examples/classification.md)
+  * [Regression](api-doc/examples/regression.md)
+  * [Text Classification](api-doc/examples/text-classification.md)
