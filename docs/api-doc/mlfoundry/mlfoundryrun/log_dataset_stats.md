@@ -1,6 +1,6 @@
 # log\_dataset\_stats
 
-log\_stats computes whylogs profile and different metrics for a dataframe and logs it. If shap\_values\_column\_names exists in the schema input then shap value is also logged for the dataframe.
+log\_dataset\_stats computes whylogs profile and different metrics for a dataframe and logs it. If shap\_values\_column\_names exists in the schema input then shap value is also logged for the dataframe.
 
 | Parameters                                        | Description                                                                                                                                                               |
 | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

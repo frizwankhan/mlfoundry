@@ -69,12 +69,6 @@ X_test_df['predictions'] = y_hat_test
 # shap value computation
 explainer = shap.TreeExplainer(rf_reg)
 shap_values = explainer.shap_values(X_test)
-X_test_df['shap_values'] = list(shap_values)
-
-shap_col_map = {
-    'col0': 'shap_values'
-}
-
 
 mlf_run.log_dataset_stats(
     X_test_df, 
@@ -82,10 +76,10 @@ mlf_run.log_dataset_stats(
     data_schema=mlf.Schema(
         feature_column_names=list(boston['feature_names']),
         prediction_column_name="predictions",
-        actual_column_name="targets",
-        shap_values_column_names=shap_col_map
+        actual_column_name="targets"
     ),
     model_type=mlf.ModelType.REGRESSION,
+    shap_values=shap_values
 )
 ```
 

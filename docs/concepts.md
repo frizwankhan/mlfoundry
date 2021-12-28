@@ -17,8 +17,7 @@
 3. categorical\_feature\_column\_names (List(str)) - names of the categorical feature column features
 4. timestamp\_column\_name (str) - name of timestamp column if any.
 5. prediction\_label\_column\_name (str) - name of column that contains model prediction
-6. actual\_label\_column\_name (str) - name of column that contains actual labels
-7. shap\_values\_column\_names Dict(str, str) - name of column that contains shap values
+6. actual\_label\_column\_name (str) - name of column that contains actual labels.
 
 <mark style="color:blue;">**Metrics computed for different model types:**</mark>
 

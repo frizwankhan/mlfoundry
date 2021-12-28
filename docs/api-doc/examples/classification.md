@@ -99,26 +99,16 @@ X_test_df1 = pd.DataFrame(X_test, columns=iris.feature_names)
 explainer = shap.KernelExplainer(clf.predict_proba, X_train_df1)
 shap_values = explainer.shap_values(X_test_df1)
 
-# compute and log stats for test data
-X_test_df['class0'] = list(shap_values[0])
-X_test_df['class1'] = list(shap_values[1])
-X_test_df['class2'] = list(shap_values[2])
-
-shap_col_map = {
-    'col0': 'class0',
-    'col1': 'class1',
-    'col2': 'class2'
-}
 mlf_run.log_dataset_stats(
     X_test_df, 
     data_slice=mlf.DataSlice.TEST,
     data_schema=mlf.Schema(
         feature_column_names=iris.feature_names,
         prediction_column_name="predictions",
-        actual_column_name="targets",
-        shap_values_column_names=shap_col_map
+        actual_column_name="targets"
     ),
     model_type=mlf.ModelType.MULTICLASS_CLASSIFICATION,
+    shap_values=shap_values
 )
 
 ```
