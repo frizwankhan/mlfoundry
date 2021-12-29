@@ -33,3 +33,7 @@
   * [Classification](api-doc/examples/classification.md)
   * [Regression](api-doc/examples/regression.md)
   * [Text Classification](api-doc/examples/text-classification.md)
+  * [Cancer Classification](api-doc/examples/cancer-classification.md)
+  * [Diabetes Regression](api-doc/examples/diabetes-regression.md)
+  * [Pytorch Regression](api-doc/examples/pytorch-regression.md)
+  * [Wine Classification](api-doc/examples/wine-classification.md)

@@ -21,12 +21,12 @@ X_test_df1 = pd.DataFrame(X_test, columns=iris.feature_names)
 # Schema for the dataset
 schema = mlf.Schema(
         feature_column_names=iris.feature_names,
-        prediction_label_column_name="predictions",
-        actual_label_column_name="targets"
+        prediction_column_name="predictions",
+        actual_column_name="targets"
         )
 
 # compute and log stats for train data
-mlf_run.log_stats(
+mlf_run.log_dataset_stats(
     X_train_df, 
     data_slice=mlf.DataSlice.TRAIN,
     data_schema=schema,

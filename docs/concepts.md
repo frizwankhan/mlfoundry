@@ -16,11 +16,13 @@
 2. numerical\_feature\_column\_names (List(str)) - names of the numerical feature column features
 3. categorical\_feature\_column\_names (List(str)) - names of the categorical feature column features
 4. timestamp\_column\_name (str) - name of timestamp column if any.
-5. prediction\_label\_column\_name (str) - name of column that contains model prediction
-6. actual\_label\_column\_name (str) - name of column that contains actual labels.
+5. prediction\_column\_name (str) - name of column that contains model prediction
+6. actual\_column\_name (str) - name of column that contains actual labels.
+7. prediction\_probability\_column\_name (str) - name of column that contains prediction probabilities.
 
 <mark style="color:blue;">**Metrics computed for different model types:**</mark>
 
-1. **BINARYCLASSIFICATION**: accuracy, f1\_score, cohen\_kappa\_score, log\_loss, confusion matrix, roc\_curve, pr\_curve.
+1. **BINARY\_CLASSIFICATION**: accuracy, f1\_score, cohen\_kappa\_score, log\_loss, confusion matrix, roc\_curve, pr\_curve.
 2. **MULTICLASS\_CLASSIFICATION**: accuracy, cohen\_kappa\_score, log\_loss, confusion matrix, roc\_curve, pr\_curve.
 3. **REGRESSION**: mean\_squared\_error, mean\_absolute\_error, r2\_score, root\_mean\_squared\_error, explained\_variance\_score
+4. **TIMESERIES**: mean\_squared\_error, mean\_absolute\_error, r2\_score, root\_mean\_squared\_error
