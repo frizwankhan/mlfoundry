@@ -1,5 +1,7 @@
 # Classification
 
+Link to the notebook: [**github**](https://github.com/truefoundry/mlfoundry/blob/main/examples/sklearn/iris\_train.ipynb)****
+
 ### Importing the libraries
 
 ```python

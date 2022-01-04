@@ -1,5 +1,7 @@
 # Cancer Classification
 
+Link to the notebook: [**github**](https://github.com/truefoundry/mlfoundry/blob/main/examples/sklearn/cancer\_train.ipynb)****
+
 ### Importing packages
 
 ```python
@@ -33,7 +35,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y)
 ### Creating MLF Run
 
 ```python
-mlf_api = mlf.set_tracking_uri()
+mlf_api = mlf.get_client()
 mlf_run = mlf_api.create_run(project_name='cancer-project')
 mlf_run_2 = mlf_api.create_run(project_name='cancer-project')
 ```
@@ -132,7 +134,7 @@ mlf_run_2.log_dataset_stats(
     ),
     shap_values=shap_values,
     model_type=mlf.ModelType.BINARY_CLASSIFICATION,
-)images
+)
 ```
 
 ![](<../../.gitbook/assets/Screenshot from 2021-12-30 00-27-39.png>)

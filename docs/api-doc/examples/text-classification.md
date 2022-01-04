@@ -1,5 +1,7 @@
 # Text Classification
 
+Link to the notebook: [**github**](https://github.com/truefoundry/mlfoundry/blob/main/examples/tensorflow/sentiment\_analysis.ipynb)****
+
 ### Importing the libraries
 
 ```python
@@ -28,7 +30,7 @@ def custom_standardization(input_data):
     stripped_html = tf.strings.regex_replace(lowercase, '<br />', ' ')
     return tf.strings.regex_replace(stripped_html, '[%s]' % re.escape(string.punctuation), '')
 
-# model constants
+
 batch_size = 32
 seed = 42
 max_features = 10000
@@ -37,7 +39,13 @@ embedding_dim = 16
 epochs = 10
 AUTOTUNE = tf.data.AUTOTUNE
 
-# download IMDB data and save locally
+vectorize_layer = TextVectorization(
+    standardize=custom_standardization,
+    max_tokens=max_features,
+    output_mode='int',
+    output_sequence_length=sequence_length)
+
+
 def download_data():
     url = "https://ai.stanford.edu/~amaas/data/sentiment/aclImdb_v1.tar.gz"
     dataset = tf.keras.utils.get_file("aclImdb_v1", url, untar=True, cache_dir='.', cache_subdir='')
@@ -46,18 +54,16 @@ def download_data():
     remove_dir = os.path.join(train_dir, 'unsup')
     shutil.rmtree(remove_dir)
 
-# Vectorization layer
-vectorize_layer = TextVectorization(
-    standardize=custom_standardization,
-    max_tokens=max_features,
-    output_mode='int',
-    output_sequence_length=sequence_length)
-    
+
 def vectorize_text(text, label):
     text = tf.expand_dims(text, -1)
     return vectorize_layer(text), label
-    
-# get raw train,validation and test datasets from the dataset downloaded earlier
+
+class MetricsLogCallback(Callback):
+    def on_epoch_end(self, epoch, logs=None):
+        mlf_run.log_metrics(logs)   # logging metrics using mlfoundry run
+
+
 def get_raw_dataset():
     raw_train_ds = tf.keras.preprocessing.text_dataset_from_directory(
         'aclImdb/train',
@@ -78,7 +84,7 @@ def get_raw_dataset():
         batch_size=batch_size)
     return raw_train_ds, raw_val_ds, raw_test_ds
 
-# Vectorizing the dataset 
+
 def prep_dataset(raw_train_ds, raw_val_ds, raw_test_ds):
     # Make a text-only dataset (without labels), then call adapt
     train_text = raw_train_ds.map(lambda x, y: x)
@@ -95,12 +101,47 @@ def prep_dataset(raw_train_ds, raw_val_ds, raw_test_ds):
     val_ds = val_ds.cache().prefetch(buffer_size=AUTOTUNE)
     test_ds = test_ds.cache().prefetch(buffer_size=AUTOTUNE)
     return train_ds, val_ds, test_ds
+
+
+def build_model(train_ds, val_ds, test_ds):
+    model = tf.keras.Sequential([
+        layers.Embedding(max_features + 1, embedding_dim),
+        layers.Dropout(0.2),
+        layers.GlobalAveragePooling1D(),
+        layers.Dropout(0.2),
+        layers.Dense(1)])
+
+    model.summary()
+
+    model.compile(loss=losses.BinaryCrossentropy(from_logits=True),
+                  optimizer='adam',
+                  metrics=tf.metrics.BinaryAccuracy(threshold=0.0))
+
+    model.fit(
+        train_ds,
+        validation_data=val_ds,
+        epochs=epochs,
+        callbacks=[MetricsLogCallback()])
+    return model
+
+
+def build_exportable_model(model):
+    export_model = tf.keras.Sequential([
+        vectorize_layer,
+        model,
+        layers.Activation('sigmoid')
+    ])
+
+    export_model.compile(
+        loss=losses.BinaryCrossentropy(from_logits=False), optimizer="adam", metrics=['accuracy']
+    )
+    return export_model
 ```
 
 ### Creating MLFoundry Run
 
 ```python
-mlf_api = mlf.set_tracking_uri() 
+mlf_api = mlf.get_client() 
 mlf_run = mlf_api.create_run(project_name='tensorflow-project')
 ```
 

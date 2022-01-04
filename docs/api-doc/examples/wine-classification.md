@@ -1,5 +1,7 @@
 # Wine Classification
 
+Link to the notebook: [**github**](https://github.com/truefoundry/mlfoundry/blob/main/examples/sklearn/wine\_train.ipynb)****
+
 ### Importing packages
 
 ```python
@@ -34,7 +36,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y)
 ### Creating MLF Run
 
 ```python
-mlf_api = mlf.set_tracking_uri()
+mlf_api = mlf.get_client()
 mlf_run = mlf_api.create_run(project_name='wine-project')
 mlf_run_2 = mlf_api.create_run(project_name='wine-project')
 ```

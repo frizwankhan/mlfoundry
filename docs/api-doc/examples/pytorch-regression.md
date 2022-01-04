@@ -1,5 +1,7 @@
 # Pytorch Regression
 
+Link to the notebook: [**github**](https://github.com/truefoundry/mlfoundry/blob/main/examples/pytorch/pytorch\_train.ipynb)****
+
 ### Importing packages
 
 ```python
@@ -104,7 +106,7 @@ def train(epoch, lr, hidden, run):
 ### Creating MLF Run
 
 ```python
-mlf_api = mlf.set_tracking_uri()
+mlf_api = mlf.get_client()
 mlf_run = mlf_api.create_run(project_name='pytorch-project')
 mlf_run_2 = mlf_api.create_run(project_name='pytorch-project')
 ```
