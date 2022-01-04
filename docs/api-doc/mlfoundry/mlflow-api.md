@@ -7,7 +7,7 @@ We can use any mlflow api on top of our mlf\_run.
 ```python
 import mlfoundry as mlf
 
-mlf_api = mlf.set_tracking_uri()
+mlf_api = mlf.get_client()
 mlf_run = mlf_api.create_run(project_name=<project-name>)
 
 with mlf.mlflow.start_run(run_id=mlf_run.run_id, experiment_id=mlf_run.experiment_id) as run:

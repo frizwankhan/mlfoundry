@@ -7,7 +7,7 @@ get\_params returns all the params that are logged using MLFoundry.
 ```python
 import mlfoundry as mlf
 
-mlf_api = mlf.set_tracking_uri()
+mlf_api = mlf.get_client()
 mlf_run = mlf_api.create_run(project_name=<project-name>)
 
 params = {'classes': clf.classes_, 'features': clf.n_features_in_}

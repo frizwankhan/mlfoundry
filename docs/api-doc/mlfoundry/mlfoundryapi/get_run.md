@@ -15,7 +15,7 @@ Given the run\_id _of a_ mlf\_run returns the corresponding MLFondryRun object.
 ```python
 import mlfoundry as mlf
 
-mlf_api = mlf.set_tracking_uri()
+mlf_api = mlf.get_client()
 ## Getting run by id
 mlf_run = mlf_api.get_run(run_id=<run-id>)
 ```

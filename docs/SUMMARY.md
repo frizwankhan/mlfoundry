@@ -8,6 +8,7 @@
 ## API Doc
 
 * [MLFoundry](api-doc/mlfoundry/README.md)
+  * [get\_client](api-doc/mlfoundry/get\_client.md)
   * [MLFoundryAPI](api-doc/mlfoundry/mlfoundryapi/README.md)
     * [create\_run](api-doc/mlfoundry/mlfoundryapi/create\_run.md)
     * [get\_run](api-doc/mlfoundry/mlfoundryapi/get\_run.md)

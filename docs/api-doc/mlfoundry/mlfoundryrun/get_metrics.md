@@ -7,7 +7,7 @@ get\_metrics returns a list of all the metrics that are logged using MLFoundry f
 ```python
 import mlfoundry as mlf
 
-mlf_api = mlf.set_tracking_uri()
+mlf_api = mlf.get_client()
 mlf_run = mlf_api.create_run(project_name=<project-name>)
 
 metrics_dict = {}

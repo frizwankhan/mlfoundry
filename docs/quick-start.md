@@ -18,7 +18,7 @@ Create an project and use the project\_name to create a run:
 ```python
 import mlfoundry as mlf
 
-mlf_api = mlf.set_tracking_uri()
+mlf_api = mlf.get_client()
  # create a run
 mlf_run = mlf_api.create_run(project_name=<project-name>)
 ```
@@ -26,7 +26,7 @@ mlf_run = mlf_api.create_run(project_name=<project-name>)
 If you want to use a previously created run:
 
 ```python
-mlf_api = mlf.set_tracking_uri()
+mlf_api = mlf.get_client()
 # printing all the run's available and get the run_id
 mlf_runs = mlf_api.get_all_runs()
 mlf_run = mlf_api.get_run(run_id=<run_id>)

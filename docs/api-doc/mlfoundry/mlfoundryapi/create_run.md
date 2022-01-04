@@ -16,6 +16,6 @@ Creates a run for the given project(project\_name). Each run will have a unique 
 ```python
 import mlfoundry as mlf
 
-mlf_api = mlf.set_tracking_uri()
+mlf_api = mlf.get_client()
 mlf_run = mlf_api.create_run(project_name=<project-name>)
 ```
