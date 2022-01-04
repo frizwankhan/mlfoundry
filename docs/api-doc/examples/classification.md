@@ -171,7 +171,7 @@ mlf_run.log_params(params)
 mlf_run.log_model(clf, mlf.ModelFramework.SKLEARN)
 ```
 
-To check the available list of frameworks please check [Broken link](broken-reference "mention")
+To check the available list of frameworks please check&#x20;
 
 ### Logging metrics
 
