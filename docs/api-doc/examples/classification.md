@@ -27,7 +27,7 @@ iris_frame = pd.DataFrame(iris.data, columns = iris.feature_names)
 ### Creating MLFoundry Run
 
 ```python
-mlf_api = mlf.set_tracking_uri() # to save locally
+mlf_api = mlf.get_client() # to save locally
 mlf_run = mlf_api.create_run(project_name='iris-project')
 ```
 
@@ -68,7 +68,7 @@ mlf_run.log_predictions(pd.DataFrame(X_test), list(y_hat_test))
 
 **Few thing to note here:**
 
-* To log predictions asynchronously we can use log\_predictions\_async instead of log\_predictions. To know more about log\_predictions\_async refer to __ [Broken link](broken-reference "mention")__
+* To log predictions asynchronously we can use log\_predictions\_async instead of log\_predictions. To know more about log\_predictions\_async refer to __ [log\_predictions\_async.md](../mlfoundry/mlfoundryrun/log\_predictions\_async.md "mention")__
 
 ### Logging dataset stats
 
