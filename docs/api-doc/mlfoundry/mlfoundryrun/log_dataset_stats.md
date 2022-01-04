@@ -12,24 +12,30 @@ log\_dataset\_stats computes whylogs profile and different metrics for a datafra
 #### Examples
 
 ```python
-import mlfloundry as mlf
-import shap        
+import mlfoundry as mlf
+import shap
 
-X_train_df1 = pd.DataFrame(X_train, columns=iris.feature_names)
-X_test_df1 = pd.DataFrame(X_test, columns=iris.feature_names)
+y_train_prob = clf.predict_proba(X_train)
 
-# Schema for the dataset
-schema = mlf.Schema(
-        feature_column_names=iris.feature_names,
-        prediction_column_name="predictions",
-        actual_column_name="targets"
-        )
+X_train_df = pd.DataFrame(X_train, columns=iris.feature_names)
+X_train_df['targets'] = y_train
+X_train_df['predictions'] = y_hat_train
+X_train_df['prediction_probabilities'] = list(y_train_prob)
 
-# compute and log stats for train data
+X_test_df = pd.DataFrame(X_test, columns=iris.feature_names)
+X_test_df['targets'] = y_test
+X_test_df['predictions'] = y_hat_test
+
+# compute and log stats for train data without shap
 mlf_run.log_dataset_stats(
     X_train_df, 
     data_slice=mlf.DataSlice.TRAIN,
-    data_schema=schema,
-    model_type=mlf.ModelType.MULTICLASS_CLASSIFICATION
+    data_schema=mlf.Schema(
+        feature_column_names=iris.feature_names,
+        prediction_column_name="predictions",
+        actual_column_name="targets",
+        prediction_probability_column_name="prediction_probabilities"   # to calculate probability related metrics
+    ),
+    model_type=mlf.ModelType.MULTICLASS_CLASSIFICATION,
 )
 ```
