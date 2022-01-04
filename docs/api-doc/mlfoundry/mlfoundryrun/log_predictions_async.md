@@ -2,12 +2,12 @@
 
 Similar to log\_predictions API, but logs the predictions asynchronously. And returns a python Future object, which we can await and check if the predictions are logged successfully.
 
-| Parameters                                          | Description                                                                                                                                                                                                                       |
-| --------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <mark style="color:blue;">**feature\_df**</mark>    | (pandas.DataFrame) Dataframe of the processed data                                                                                                                                                                                |
-| <mark style="color:blue;">**predictions**</mark>    | (pandas.Series or List) : list of prediction values to be logged. Validation is done to check if the size of feature df and prediction matches .                                                                                  |
-| <mark style="color:blue;">**fileformat**</mark>     | <p></p><p>(mlf.FileFormat, optional, default=PARQUET) Format of the file for the dataset to be saved.</p><p><strong>List of available fileformat:</strong></p><ol><li>mlf.FileFormat.CSV</li><li>mlf.FileFormat.PARQUET</li></ol> |
-| <mark style="color:blue;">**feature\_names**</mark> | (List optional) - list of feature names                                                                                                                                                                                           |
+| Parameters                                          | Description                                                                                                                                      |
+| --------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| <mark style="color:blue;">**feature\_df**</mark>    | (pandas.DataFrame) Dataframe of the processed data                                                                                               |
+| <mark style="color:blue;">**predictions**</mark>    | (pandas.Series or List) : list of prediction values to be logged. Validation is done to check if the size of feature df and prediction matches . |
+| <mark style="color:blue;">**fileformat**</mark>     | <p></p><p>(mlf.FileFormat, optional, default=PARQUET) Format of the file for the dataset to be saved.</p>                                        |
+| <mark style="color:blue;">**feature\_names**</mark> | (List optional) - list of feature names                                                                                                          |
 
 #### Examples
 
