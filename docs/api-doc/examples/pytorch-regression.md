@@ -138,34 +138,13 @@ mlf_run_2.log_params(params)
 ```python
 import shap
 
-### Model 1 ######
-X_train = pd.DataFrame(x.detach().numpy(), columns=["0"])
-X_train_df = X_train.copy()
-X_train_df['targets'] = y[:,0]
-X_train_df['predictions'] = net1(x).detach().numpy()
-
-# shap value computation model 1 train set
-shap_values = shap.DeepExplainer(net1, x)
-shap_values = shap_values.shap_values(x)
-
-# compute and log stats for train data without shap
-mlf_run.log_dataset_stats(
-    X_train_df, 
-    data_slice=mlf.DataSlice.TRAIN,
-    data_schema=mlf.Schema(
-        feature_column_names=["0"],
-        prediction_column_name="predictions",
-        actual_column_name="targets"
-    ),
-    model_type=mlf.ModelType.REGRESSION,
-)
-
 X_test = pd.DataFrame(x_test.detach().numpy(), columns=["0"])
+
 X_test_df = X_test.copy()
 X_test_df['targets'] = y_test[:,0]
 X_test_df['predictions'] = y_test_hat
 
-# shap value computation model 1 test set
+# shap value computation
 shap_values = shap.DeepExplainer(net1, x)
 shap_values = shap_values.shap_values(x_test)
 
@@ -178,30 +157,6 @@ mlf_run.log_dataset_stats(
         actual_column_name="targets"
     ),
     shap_values=shap_values,
-    model_type=mlf.ModelType.REGRESSION,
-)
-
-### Model 1 ######
-
-### Model 2 ######
-X_train = pd.DataFrame(x.detach().numpy(), columns=["0"])
-X_train_df = X_train.copy()
-X_train_df['targets'] = y[:,0]
-X_train_df['predictions'] = net2(x).detach().numpy()
-
-# shap value computation model 2 train set
-shap_values = shap.DeepExplainer(net2, x)
-shap_values = shap_values.shap_values(x)
-
-# compute and log stats for train data without shap
-mlf_run.log_dataset_stats(
-    X_train_df, 
-    data_slice=mlf.DataSlice.TRAIN,
-    data_schema=mlf.Schema(
-        feature_column_names=["0"],
-        prediction_column_name="predictions",
-        actual_column_name="targets"
-    ),
     model_type=mlf.ModelType.REGRESSION,
 )
 
@@ -209,9 +164,10 @@ X_test_df = X_test.copy()
 X_test_df['targets'] = y_test[:,0]
 X_test_df['predictions'] = y_test_hat_2
 
-# shap value computation model 2 test set
+# shap value computation
 shap_values = shap.DeepExplainer(net2, x)
 shap_values = shap_values.shap_values(x_test)
+
 
 mlf_run_2.log_dataset_stats(
     X_test_df, 
@@ -219,13 +175,11 @@ mlf_run_2.log_dataset_stats(
     data_schema=mlf.Schema(
         feature_column_names=["0"],
         prediction_column_name="predictions",
-        actual_column_name="targets",
+        actual_column_name="targets"
     ),
-    shap_values=shap_values,
     model_type=mlf.ModelType.REGRESSION,
+    shap_values=shap_values
 )
-
-### Model 2 ######
 ```
 
 ![](<../../.gitbook/assets/Screenshot from 2021-12-30 00-45-11.png>)
