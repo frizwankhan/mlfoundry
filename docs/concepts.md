@@ -10,7 +10,9 @@
 
 <mark style="color:blue;">**run\_name:**</mark> we can assign each run a name.
 
-<mark style="color:blue;">**Schema:**</mark> Schema is way of letting MLFoundry know about the dataset, so that it can compute metrics efficiently. Schema contains these list of variable:
+#### <mark style="color:blue;">**Schema**</mark>
+
+Schema is way of letting MLFoundry know about the dataset, so that it can compute metrics efficiently. Schema contains these list of variable:
 
 1. feature\_column\_names (List(str)) - names of the features
 2. numerical\_feature\_column\_names (List(str)) - names of the numerical feature column features
@@ -20,7 +22,7 @@
 6. actual\_column\_name (str) - name of column that contains actual labels.
 7. prediction\_probability\_column\_name (str) - name of column that contains prediction probabilities.
 
-<mark style="color:blue;">**Metrics computed for different model types:**</mark>
+#### <mark style="color:blue;">**Metrics computed for different model types**</mark>
 
 1. **BINARY\_CLASSIFICATION**: accuracy, f1\_score, cohen\_kappa\_score, log\_loss, confusion matrix, roc\_curve, pr\_curve.
 2. **MULTICLASS\_CLASSIFICATION**: accuracy, cohen\_kappa\_score, log\_loss, confusion matrix, roc\_curve, pr\_curve.

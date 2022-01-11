@@ -2,12 +2,12 @@
 
 log\_dataset\_stats computes whylogs profile and different metrics for a dataframe and logs it. If shap\_values\_column\_names exists in the schema input then shap value is also logged for the dataframe.
 
-| Parameters                                        | Description                                                                                                                                                                                             |
-| ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <mark style="color:blue;">**df**</mark>           | (pandas.DataFrame) Dataframe to compute the metrics and whylogs profiles                                                                                                                                |
-| <mark style="color:blue;">**data\_slice**</mark>  | <p>(mlf.DataSlice) dataslice that the dataframe belongs to.</p><p>List of available dataslice: <a href="../enums.md"><mark style="color:purple;">Link</mark></a><mark style="color:purple;"></mark></p> |
-| <mark style="color:blue;">**data\_schema**</mark> | (mlf\_.Schema\_) schema of the dataframe that contains the feature names and target labels. To know more about schema check [concepts.md](../../../concepts.md "mention")                               |
-| <mark style="color:blue;">**model\_type**</mark>  | (mlf.ModelType) List of available ModelType: [<mark style="color:purple;">Link</mark>](../enums.md#modeltype)<mark style="color:purple;"></mark>                                                        |
+| Parameters                                        | Description                                                                                                                                                                  |
+| ------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <mark style="color:blue;">**df**</mark>           | (pandas.DataFrame) Dataframe to compute the metrics and whylogs profiles                                                                                                     |
+| <mark style="color:blue;">**data\_slice**</mark>  | <p>(mlf.DataSlice) dataslice that the dataframe belongs to.</p><p>List of available dataslice: <a data-mention href="../enums.md#dataslice">#dataslice</a></p>               |
+| <mark style="color:blue;">**data\_schema**</mark> | (mlf\_.Schema\_) schema of the dataframe that contains the feature names and target labels. To know more about schema check [#schema](../../../concepts.md#schema "mention") |
+| <mark style="color:blue;">**model\_type**</mark>  | (mlf.ModelType) List of available ModelType: [#modeltype](../enums.md#modeltype "mention")                                                                                   |
 
 #### Examples
 
