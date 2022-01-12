@@ -27,7 +27,7 @@
     * [get\_metrics](api-doc/mlfoundry/mlfoundryrun/get\_metrics.md)
     * [get\_params](api-doc/mlfoundry/mlfoundryrun/get\_params.md)
     * [get\_logged\_predictions](api-doc/mlfoundry/mlfoundryrun/get\_logged\_predictions.md)
-    * [load\_model](api-doc/mlfoundry/mlfoundryrun/load\_model.md)
+    * [get\_model](api-doc/mlfoundry/mlfoundryrun/get\_model.md)
   * [MlFlow API](api-doc/mlfoundry/mlflow-api.md)
   * [Enums](api-doc/mlfoundry/enums.md)
 * [Examples](api-doc/examples/README.md)
