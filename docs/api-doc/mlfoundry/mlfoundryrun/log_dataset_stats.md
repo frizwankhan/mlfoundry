@@ -9,7 +9,9 @@ log\_dataset\_stats computes whylogs profile and different metrics for a datafra
 | <mark style="color:blue;">**data\_schema**</mark> | (mlf\_.Schema\_) schema of the dataframe that contains the feature names and target labels. To know more about schema check [#schema](../../../concepts.md#schema "mention") |
 | <mark style="color:blue;">**model\_type**</mark>  | (mlf.ModelType) List of available ModelType: [#modeltype](../enums.md#modeltype "mention")                                                                                   |
 
-#### Examples
+### Examples
+
+#### Getting the train and test dataframes
 
 ```python
 import mlfoundry as mlf
@@ -25,7 +27,11 @@ X_train_df['prediction_probabilities'] = list(y_train_prob)
 X_test_df = pd.DataFrame(X_test, columns=iris.feature_names)
 X_test_df['targets'] = y_test
 X_test_df['predictions'] = y_hat_test
+```
 
+#### log\_dataset\_stats without shap values
+
+```python
 # compute and log stats for train data without shap
 mlf_run.log_dataset_stats(
     X_train_df, 
@@ -37,5 +43,28 @@ mlf_run.log_dataset_stats(
         prediction_probability_column_name="prediction_probabilities"   # to calculate probability related metrics
     ),
     model_type=mlf.ModelType.MULTICLASS_CLASSIFICATION,
+)
+```
+
+#### log\_dataset\_stats along with shap values
+
+```python
+# shap value computation
+X_train_df1 = pd.DataFrame(X_train, columns=iris.feature_names)
+X_test_df1 = pd.DataFrame(X_test, columns=iris.feature_names)
+explainer = shap.KernelExplainer(clf.predict_proba, X_train_df1)
+shap_values = explainer.shap_values(X_test_df1)
+
+mlf_run.log_dataset_stats(
+    X_test_df, 
+    data_slice=mlf.DataSlice.TEST,
+    data_schema=mlf.Schema(
+        feature_column_names=iris.feature_names,
+        prediction_column_name="predictions",
+        actual_column_name="targets"
+    ),
+    model_type=mlf.ModelType.MULTICLASS_CLASSIFICATION,
+    ## passing the shap values
+    shap_values=shap_values
 )
 ```
