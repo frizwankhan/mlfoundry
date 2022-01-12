@@ -9,7 +9,7 @@ log\_dataset\_stats computes whylogs profile and different metrics for a datafra
 | <mark style="color:blue;">**data\_schema**</mark> | (mlf\_.Schema\_) schema of the dataframe that contains the feature names and target labels. To know more about schema check [#schema](../../../concepts.md#schema "mention") |
 | <mark style="color:blue;">**model\_type**</mark>  | (mlf.ModelType) List of available ModelType: [#modeltype](../enums.md#modeltype "mention")                                                                                   |
 
-### Examples
+### Example
 
 #### Getting the train and test dataframes
 
