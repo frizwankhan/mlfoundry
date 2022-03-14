@@ -34,7 +34,7 @@ X_test_df['predictions'] = y_hat_test
 ```python
 # compute and log stats for train data without shap
 mlf_run.log_dataset_stats(
-    X_train_df, 
+    X_train_df,
     data_slice=mlf.DataSlice.TRAIN,
     data_schema=mlf.Schema(
         feature_column_names=iris.feature_names,
@@ -56,7 +56,7 @@ explainer = shap.KernelExplainer(clf.predict_proba, X_train_df1)
 shap_values = explainer.shap_values(X_test_df1)
 
 mlf_run.log_dataset_stats(
-    X_test_df, 
+    X_test_df,
     data_slice=mlf.DataSlice.TEST,
     data_schema=mlf.Schema(
         feature_column_names=iris.feature_names,

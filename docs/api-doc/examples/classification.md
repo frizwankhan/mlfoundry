@@ -1,6 +1,6 @@
 # Classification
 
-Link to the notebook: [**github**](https://github.com/truefoundry/mlfoundry/blob/main/examples/sklearn/iris\_train.ipynb)****
+Link to the notebook: [**github**](https://github.com/truefoundry/mlfoundry-examples/blob/main/examples/sklearn/iris_train.ipynb)****
 
 ### Importing the libraries
 
@@ -102,7 +102,7 @@ explainer = shap.KernelExplainer(clf.predict_proba, X_train_df1)
 shap_values = explainer.shap_values(X_test_df1)
 
 mlf_run.log_dataset_stats(
-    X_test_df, 
+    X_test_df,
     data_slice=mlf.DataSlice.TEST,
     data_schema=mlf.Schema(
         feature_column_names=iris.feature_names,

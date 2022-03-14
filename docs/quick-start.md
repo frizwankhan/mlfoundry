@@ -6,7 +6,7 @@
 {% tab title="Python" %}
 ```
 # Install via pip
-pip install mlfoundry mlfoundry-ui --extra-index-url https://api.packagr.app/public
+pip install mlfoundry mlfoundry-ui
 ```
 {% endtab %}
 {% endtabs %}
@@ -28,9 +28,15 @@ If you want to use a previously created run:
 ```python
 mlf_api = mlf.get_client()
 # printing all the run's available and get the run_id
-mlf_runs = mlf_api.get_all_runs()
+mlf_runs = mlf_api.get_all_runs(project_name=<project-name>)
 mlf_run = mlf_api.get_run(run_id=<run_id>)
 ```
+
+## Start Dashboard
+```bash
+mlfoundry ui
+```
+
 
 ## Start Logging
 
@@ -54,23 +60,4 @@ mlf_run.log_params({'learning_rate':0.01,
 mlf_run.log_metrics({'accuracy':87,
                   'f1_score':0.84,
                   })
-```
-
-#### Log predictions
-
-Log predictions synchronously:
-
-```python
-mlf_run.log_predictions(self, feature_df, predictions)
-```
-
-Log predictions asynchronously
-
-```python
-responses = mlf_run.log_predictions_async(self, feature_df, predictions)
-
-#### To confirm that the log request completed successfully, await for futures to resolve: This is a blocking call
-import concurrent.futures as cf
-for response in cf.as_completed(responses):
-  res = response.result()
 ```

@@ -10,8 +10,9 @@ get\_model returns the model object on the particular framework that was logged 
 
 ```python
 sk_model = mlf_run.get_model()
- 
+
 # use Pandas DataFrame to make predictions
+pandas_df = ...
 predictions = sk_model.predict(pandas_df)
 
 ```

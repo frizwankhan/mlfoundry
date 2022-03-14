@@ -5,7 +5,7 @@ Logs a metric dictionary, If multiple metric value is logged under same metric t
 | Parameters                                         | Description                                                                                                                             |
 | -------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
 | <mark style="color:blue;">**metrics\_dict**</mark> | (dict) - dictionary of metrics, If metrics with same key is logged then the metric is appended to the already existing value in a list. |
-
+| <mark style="color:blue;">**step**</mark> | (int) - step associated with the metrics present in metric_dict |
 #### Example
 
 ```python

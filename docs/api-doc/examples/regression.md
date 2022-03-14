@@ -1,13 +1,13 @@
 # Regression
 
-Link to the notebook: [**github**](https://github.com/truefoundry/mlfoundry/blob/main/examples/sklearn/boston\_train.ipynb)****
+Link to the notebook: [**github**](https://github.com/truefoundry/mlfoundry-examples/blob/main/examples/sklearn/boston_train.ipynb)****
 
 ### Importing the libraries
 
 ```python
 import shap
 import mlfoundry as mlf
-import pandas as pd 
+import pandas as pd
 from sklearn.datasets import load_boston
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import train_test_split
@@ -73,7 +73,7 @@ shap_values = explainer.shap_values(X_test)
 
 
 mlf_run.log_dataset_stats(
-    X_test_df, 
+    X_test_df,
     data_slice=mlf.DataSlice.TEST,
     data_schema=mlf.Schema(
         feature_column_names=list(boston['feature_names']),

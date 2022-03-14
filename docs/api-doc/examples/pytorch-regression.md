@@ -1,6 +1,6 @@
 # Pytorch Regression
 
-Link to the notebook: [**github**](https://github.com/truefoundry/mlfoundry/blob/main/examples/pytorch/pytorch\_train.ipynb)****
+Link to the notebook: [**github**](https://github.com/truefoundry/mlfoundry-examples/blob/main/examples/pytorch/pytorch_train.ipynb)****
 
 ### Importing packages
 
@@ -28,8 +28,8 @@ y = x.pow(2) + 0.2*torch.rand(x.size())                 # noisy y data (tensor),
 # torch can only train on Variable, so convert them to Variable
 x, y = Variable(x), Variable(y)
 
-x_test = torch.rand(100,1)  
-y_test = x.pow(2)    
+x_test = torch.rand(100,1)
+y_test = x.pow(2)
 ```
 
 ### Pytorch model
@@ -56,7 +56,7 @@ loss_func = torch.nn.MSELoss()  # this is for regression mean squared loss
 def train(epoch, lr, hidden, run):
         net = Net(n_feature=1, n_hidden=hidden, n_output=1)     # define the network
         optimizer = torch.optim.SGD(net.parameters(), lr=lr)
-        
+
         fig, ax = plt.subplots(figsize=(12,7))
 
         for t in range(epoch):
@@ -68,7 +68,7 @@ def train(epoch, lr, hidden, run):
                 optimizer.zero_grad()   # clear gradients for next train
                 loss.backward()         # backpropagation, compute gradients
                 optimizer.step()        # apply gradients
-                
+
                 y_test_numpy = y_test.detach().numpy()
                 y_test_numpy = np.reshape(y_test_numpy, y_test_numpy.shape[0])
 
@@ -77,10 +77,10 @@ def train(epoch, lr, hidden, run):
 
                 y_test_hat_2 = net(x_test).detach().numpy()
                 y_test_hat_2 = np.reshape(y_test_hat_2, y_test_hat_2.shape[0])
-                
+
                 mae = mean_absolute_error(y_test_numpy, y_test_hat)
                 mse = mean_squared_error(y_test_numpy, y_test_hat)
-                
+
                 run.log_metrics({"mean absolute error":mae, "mean squared error":mse})
 
                 # plot and show learning process
@@ -96,7 +96,7 @@ def train(epoch, lr, hidden, run):
                 ax.text(1.0, 0, 'Loss = %.4f' % loss.data.numpy(),
                         fontdict={'size': 24, 'color':  'red'})
 
-                fig.canvas.draw()  
+                fig.canvas.draw()
                 image = np.frombuffer(fig.canvas.tostring_rgb(), dtype='uint8')
                 image  = image.reshape(fig.canvas.get_width_height()[::-1] + (3,))
 
@@ -149,7 +149,7 @@ shap_values = shap.DeepExplainer(net1, x)
 shap_values = shap_values.shap_values(x_test)
 
 mlf_run.log_dataset_stats(
-    X_test_df, 
+    X_test_df,
     data_slice=mlf.DataSlice.TEST,
     data_schema=mlf.Schema(
         feature_column_names=["0"],
@@ -170,7 +170,7 @@ shap_values = shap_values.shap_values(x_test)
 
 
 mlf_run_2.log_dataset_stats(
-    X_test_df, 
+    X_test_df,
     data_slice=mlf.DataSlice.TEST,
     data_schema=mlf.Schema(
         feature_column_names=["0"],

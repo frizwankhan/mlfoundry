@@ -1,6 +1,6 @@
 # Text Classification
 
-Link to the notebook: [**github**](https://github.com/truefoundry/mlfoundry/blob/main/examples/tensorflow/sentiment\_analysis.ipynb)****
+Link to the notebook: [**github**](https://github.com/truefoundry/mlfoundry-examples/blob/main/examples/tensorflow/sentiment_analysis.ipynb)****
 
 ### Importing the libraries
 
@@ -141,7 +141,7 @@ def build_exportable_model(model):
 ### Creating MLFoundry Run
 
 ```python
-mlf_api = mlf.get_client() 
+mlf_api = mlf.get_client()
 mlf_run = mlf_api.create_run(project_name='tensorflow-project')
 ```
 
@@ -152,7 +152,7 @@ mlf_run = mlf_api.create_run(project_name='tensorflow-project')
 class MetricsLogCallback(Callback):
     def on_epoch_end(self, epoch, logs=None):
         mlf_run.log_metrics(logs)   # logging metrics using mlfoundry run
-        
+
 # building the model
 def build_model(train_ds, val_ds, test_ds):
     model = tf.keras.Sequential([
@@ -238,7 +238,7 @@ X_test_df['targets'] = y_test
 X_test_df['predictions'] = y_hat_test
 
 mlf_run.log_dataset_stats(
-    X_test_df, 
+    X_test_df,
     data_slice=mlf.DataSlice.TEST,
     data_schema=mlf.Schema(
         feature_column_names=['text'],

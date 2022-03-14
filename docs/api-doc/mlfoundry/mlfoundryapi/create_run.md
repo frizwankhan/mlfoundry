@@ -6,6 +6,7 @@ Creates a run for the given project(project\_name). Each run will have a unique 
 | -------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | <mark style="color:blue;">**project\_name**</mark> | (str) If the project\_name already exists then the run is grouped under that project. If the project\_name does not exist, a new project is created and the run is assigned to the project. |
 | <mark style="color:blue;">**run\_name**</mark>     | (str, optional, default=None) While creating a run we can pass in a run\_name to identify the run easily.                                                                                   |
+| <mark style="color:blue;">**tags**</mark>     | (Dict[str, Any], optional) Tags to associate with this run |
 
 #### Returns
 

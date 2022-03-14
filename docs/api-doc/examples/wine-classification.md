@@ -1,6 +1,6 @@
 # Wine Classification
 
-Link to the notebook: [**github**](https://github.com/truefoundry/mlfoundry/blob/main/examples/sklearn/wine\_train.ipynb)****
+Link to the notebook: [**github**](https://github.com/truefoundry/mlfoundry-examples/blob/main/examples/sklearn/wine_train.ipynb)****
 
 ### Importing packages
 
@@ -102,7 +102,7 @@ explainer = shap.TreeExplainer(tree_clf)
 shap_values = explainer.shap_values(X_test)
 
 mlf_run.log_dataset_stats(
-    X_test_df, 
+    X_test_df,
     data_slice=mlf.DataSlice.TEST,
     data_schema=mlf.Schema(
         feature_column_names=list(data.feature_names),
@@ -124,7 +124,7 @@ explainer = shap.TreeExplainer(tree_clf_1)
 shap_values = explainer.shap_values(X_test)
 
 mlf_run_2.log_dataset_stats(
-    X_test_df, 
+    X_test_df,
     data_slice=mlf.DataSlice.TEST,
     data_schema=mlf.Schema(
         feature_column_names=list(data.feature_names),

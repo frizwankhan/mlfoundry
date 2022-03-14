@@ -12,3 +12,13 @@ Logs the parameter given param\_dict that has param name as key and param value 
 params = {'classes': clf.classes_, 'features': clf.n_features_in_}
 mlf_run.log_params(params)
 ```
+
+We can also pass argparse Namespace objects directly
+
+```python
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument("-batch_size", type=int, required=True)
+args = parser.parse_args()
+mlf_run.log_params(args)
+```
