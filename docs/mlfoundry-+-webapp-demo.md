@@ -58,18 +58,6 @@ clf = svm.SVC(gamma='scale', kernel='rbf', probability=True)
 clf.fit(X, y)
 ```
 
-### Logging predictions
-
-```python
-y_hat_train = clf.predict(X_train)
-y_hat_test = clf.predict(X_test)
-mlf_run.log_predictions(pd.DataFrame(X_test), list(y_hat_test))
-```
-
-**Few thing to note here:**
-
-* To log predictions asynchronously we can use log\_predictions\_async instead of log\_predictions. To know more about log\_predictions\_async refer to \_\_ [log\_predictions\_async.md](api-doc/mlfoundry/mlfoundryrun/log\_predictions\_async.md "mention")\_\_
-
 ### Logging dataset stats
 
 ```python
