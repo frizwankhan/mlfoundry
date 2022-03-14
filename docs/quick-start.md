@@ -11,13 +11,24 @@ pip install mlfoundry mlfoundry-ui
 {% endtab %}
 {% endtabs %}
 
+## Importing the libraries
+
+```python
+import pandas as pd
+import numpy as np
+from sklearn import datasets
+from sklearn import svm
+from sklearn.model_selection import train_test_split
+
+# importing mlfoundry
+import mlfoundry as mlf
+```
+
 ## Initialise MLFoundry
 
 Create an project and use the project\_name to create a run:
 
 ```python
-import mlfoundry as mlf
-
 mlf_api = mlf.get_client()
  # create a run
 mlf_run = mlf_api.create_run(project_name=<project-name>)
@@ -33,10 +44,10 @@ mlf_run = mlf_api.get_run(run_id=<run_id>)
 ```
 
 ## Start Dashboard
+
 ```bash
 mlfoundry ui
 ```
-
 
 ## Start Logging
 
